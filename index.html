@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text to Speech</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="one">Text to Speech</h1>
+    <textarea id="textToSpeak" rows="4" cols="50" placeholder="Enter text here..."></textarea>
+    <button id="speakButton">Speak</button>
+
+    <script>
+        if ('speechSynthesis' in window) {
+            const speakButton = document.getElementById('speakButton');
+            const textToSpeech = document.getElementById('textToSpeak'); // Error: Variable name should be 'textToSpeech', not 'textToSpeak'
+
+            const utterance = new SpeechSynthesisUtterance();
+
+            utterance.rate = 1;
+            utterance.pitch = 1;
+            utterance.lang = 'en-US';
+
+            speakButton.addEventListener('click', () => {
+                if (textToSpeech.value !== "") { // Error: Variable name should be 'textToSpeech', not 'textToSpeak'
+                    utterance.text = textToSpeech.value; // Error: Variable name should be 'textToSpeech', not 'textToSpeak'
+                    speechSynthesis.speak(utterance);
+                }
+            });
+        } else {
+            console.log("Web Speech API is not supported by the browser.");
+        }
+    </script>
+</body>
+</html>
